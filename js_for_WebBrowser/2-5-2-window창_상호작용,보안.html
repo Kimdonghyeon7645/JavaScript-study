@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-5-2, 문서간 상호작용</title>
+</head>
+<body>
+    <input type="button" value="문서 창 열기" onclick="winopen();">
+    <input type="text" onkeypress="winmessage(this.value)">
+    <input type="button" value="문서 창 닫기" onclick="winclose()">
+
+    <script>
+    function winopen(){
+        win = window.open('2-5-2-remote_control.html', 'width=300px, height=500px');
+    }
+    function winmessage(msg){
+        alert(msg + ' 입력!')
+        win.document.getElementById('controlme').innerText=msg;
+    }
+    function winclose(){
+        win.close();
+    }
+    </script>
+</body>
+</html>
+<!--
+ 문서 간 원격으로 상호작용 :
+위같이 현재 창에서, 다른 문서를 다른 창으로 열어서, 다른 문서의 html 요소를 원격으로 수정하고, 읽어오는 상호작용이 가능하다.
+대신에 위같은 환경에서는 안되고, 같은 서버 도메인끼리의 문서들만 원격으로 접근 할 수 있다.
+
+다른 서버의 도메인 문서로는 창으로 열고 닫을 수는 있어도 문서사이에 값을 주고받을 수 없는데,
+이는 보안문제 상으로, 어떤 도메인에서 다른 도메인의 문서를 접근해서 원격으로 값을 빼내거나 수정하는 문제가 생길 수 있기 때문이다. (웹 취약점)
+이를 방지하기 위해서 같은 도메인 상의 문서가 아닌 이상 문서간의 원격 수정이 불가능하다. (대신 창을 열고 닫을 수는 있다.)
+
+
+이 말고도 제약은 더 있는데,
+바로, 사용자의 선택없이 자동으로 창을 열게 하는 것(팝업)이
+팝업 광고, 알림등 불편하고 성가신 대상으로 쓰이기에 브라우저는 자동으로 팝업이 뜨지 못하도록 한다.
+따라서 새창을 여는 것은 사용자의 선택이나 요청같은 것 없이 자동으로 하는 것이 팝업으로 간주돼 차단된다.
+
+이를 방지하기 위해서 사용자가 뭔가 해야지 창이 열리도록 코드를 짜야 된다.
+-->

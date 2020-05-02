@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>html 에서 javascript 로드하기</title>
+</head>
+<body>
+
+    <!--방법 1 (html 태그의 속성값에서 사용)-->
+    <input type="button" onclick="alert('자바스크립트!')" value="한번 눌러봐">
+    
+    <!--방법 2 (script 태그 안에서 사용)-->
+    <script>
+        alert('조금씩 하다보면 넌 할 수 있다!')
+    </script>
+    
+    <!--방법 3 (외부 js 문서를 불러와 사용)-->
+    <script type="text/javascript" src="../1-0-실행방법.js"></script>
+    
+</body>
+</html>
+
+<!--
+html, css로 웹페이지를 만든다면, 거기에 js를 넣어서 JavaScript(자바스크립트)으로 웹페이지를 제어할 수 있는데, 
+그려려면 js파일을 html 안에서 로드해야 한다.
+
+html에서 js(자바스크립트)를 넣어서 사용하는 법은 3가지가 있다.
+
+1. html 태그의 속성값으로 직접 js를 적는 방식 (inline)
+html 의 태그 안에서직접 자바스크립트 코드를 속성값으로 넣는 것인데, 
+웹표준에 맞지 않고, 정보(html)와 제어(js)가 섞여서 정보의 가치가 떨어진다.
+
+2. body 안 script 태그안에 js를 삽입하는 방식 (script)
+html 태그안에서 html 와 js 코드를 분리할 수 있다. (body 태그 안에서 사용)
+
+3. js를 외부 파일로 작성해 script 태그의 scr 속성으로 불러오는 방식 (외부파일)
+script 태그가 body 뿐만 아니라, head 태그에서도 들어갈 수 있지만, 
+window.onload = function {} 로 감싸서, 웹페이지를 모두 읽어온(로드한) 후에 js를 읽도록 작성해야 한다. 
+그렇지 않으면 에러가 난다. 
+(script 태그를 body 태그 안의 끝자락에 쓰는게 성능문제에서 head 안에 쓰는 것 보다좋다.)
+-->
+
+<!--Reference : https://btyy.tistory.com/entry/JAVASCRIPT-WEB-html%EC%97%90%EC%84%9C-javascript-
+    %EB%A1%9C%EB%93%9C-%EB%B0%A9%EC%8B%9D-Object-Model-BOM-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%BB%A4
+    %EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98-Location-%EA%B0%9D%EC%B2%B4--> 
