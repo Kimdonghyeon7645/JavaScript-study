@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQurey 기초</title>
+</head>
+<body>
+    <ul>
+        <li>자타일여</li>
+        <li>진속불이</li>
+        <li>무주열반</li>
+        <li>홍익중생</li>
+    </ul>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
+   <script>
+       jQuery(document).ready(function($){
+            var li = $('li')
+            console.log(li)
+            console.log(li[0])
+       })
+   </script> 
+</body>
+</html>
+<!--
+jQuery 객체:
+jQuery에 대해서는 3-2-1, 3-2-2 에서 알아봤었다. 
+
+여기서 jQuery 함수의 반환값이 jQuery 객체가 된다고 배웠는데, 이 제이쿼리 객체에 대해서 이번에 알아보자.
+이 제이쿼리 객체의 중요한 특성은 암시적으로 반복을 수행하기에,
+DOM와 반대로 jQuery 객체의 메소드를 실행하면 선택된 요소(엘리먼트) 전체에 대해서 동시에 작업이 처리되게 된다.
+(이 암시적으로 반복을 수행하는 것은 값을 설정할 때만 동작하게 된다.)
+-->
