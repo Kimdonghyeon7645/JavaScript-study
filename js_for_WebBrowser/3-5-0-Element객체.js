@@ -16,21 +16,25 @@ Element
 */
 
 // 1. 식별자
-// 문서내에서 특정한 요소(엘리먼트)를 식별할 때 사용하는 API로, 특정 요소 객체에 아래와 같은 속성(프로퍼티)를 사용해서 요소의 정보(태그명, 클래스명등등)를 가져올 수 있다.
+// 문서내에서 특정한 요소(엘리먼트)를 식별하는 식별자(ex> 요소명, id, class등등)를 사용(가져오거나 변경)하는 API로, 
+// 특정 요소 객체에 아래와 같은 속성(프로퍼티)를 사용해서 요소의 식별자를 가져오고 수정도 할 수 있다.
 Element.classList
 Element.className
 Element.id
 Element.tagName
 
 // 2. 조회
-// 문서내에서 어떤 요소(엘리먼트)의 하위 요소(엘리먼트)를 조회할 때 사용하는 API로, 특정 요소(엘리먼트) 객체에 아래의 속성들을 사용해서 요소의 하위 요소(혹은 요소들)을 가져올(조회할) 수 있다.
-Element.getElementsByClassName
-Element.getElementsByTagName
-Element.querySelector
-Element.querySelectorAll
+// 문서내에서 어떤 요소(엘리먼트)의 하위 요소(엘리먼트)를 조회할 때 사용하는 API로, 
+// 특정 요소(엘리먼트) 객체에 아래의 메서드들을 사용해서 요소의 하위 요소(혹은 요소들)을 가져올(조회할)수 있다.
+// (3-1.js 에서 이미 배웠었다.)
+Element.getElementsByClassName()
+Element.getElementsByTagName()
+Element.querySelector()
+Element.querySelectorAll()
 
 // 3. 속성
-// 문서내에서 특정 요소(엘리먼트)의 속성을 알아내고, 추가로 변경까지 할 때 사용하는 API로, 특정 요소(엘리먼트) 객체에 아래의 메서드를 사용해서, 요소의 속성을 반환하거나, 변경, 삭제할 수도 있다.
+// 문서내에서 특정 요소(엘리먼트)의 속성을 알아내고, 추가로 변경까지 할 때 사용하는 API로, 
+// 특정 요소(엘리먼트) 객체에 아래의 메서드를 사용해서, 요소의 속성을 반환하거나, 변경, 삭제할 수도 있다.
 Element.getAttribute(name)
 Element.setAttribute(name, value)
 Element.hasAttribute(name)
