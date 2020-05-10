@@ -1,0 +1,69 @@
+<!--
+Element(엘리먼트, 요소)를 조회하는 조회 API는 사실,
+3-1.js 에서 이미 배웠던 내용이다.
+.getElementsByTagName(), .getElementsByClassName(), .getElementById(), .querySelector(), .querySelectorAll()
+과 같은 메서드들이 사실 Element 객체의 조회 기능(API)에 해당된다.
+
+그렇기에 이런 메서드의 활용법은 지난번의 정리로 대신하고, 이번에는,
+조회 대상을 기본값인 모두가 아니라, 조회 대상을 제한하는 방법에 대해 배워보겠다.
+(사실상 이것도 3-1.js 에서 배웠던 부분인데, Element 객체와 그 API의 개념과 연결지어서 이번에 제대로 정리한다.)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element의 조회 API</title>
+</head>
+<body>
+    <ul>
+        <li id='my_gong'>아공
+            <ul>
+                <li>과거에 집착하지 말라!</li>
+                <li>미래를 걱정하지 말라!</li>
+                <li>에고를 내세우지 말라!</li>
+                <li>참나의 현존에 만족하라!</li>
+            </ul>
+        </li>
+        <li id='logic_gong'>법공
+            <ul>
+                <li>일체의 존재는 참나의 신비임을 알라!</li>
+                <li>참나의 현존에 일체를 맡기며 살아가라!</li>
+                <li>참나의 뜻에 따라 남을 나처럼 사랑하라!</li>
+                <li>모두를 이롭게 하는 양심적 삶을 살라!</li>
+            </ul>
+        </li>
+        <li id='perfact_gong'>구공
+            <ul>
+                <li>내가 받고 싶은 것을 남에게 베풀어라!</li>
+                <li>내가 당하기 싫은 것을 남에게 가하지 말라!</li>
+                <li>진실을 수용하고 매사에 겸손하라!</li>
+                <li>양심의 구현에 최선을 다하라!</li>
+                <li>늘 고요하되 자명한 참나와 접속하라!</li>
+                <li>자명한 것만 옳다고 인가하라!</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        /*
+        3-1.js 에서 다양한 Element 객체의 조회 API(기능), 메서드로 요소들을 검색할 때,
+        기본적으로 document 객체 뒤에 메서드를 붙여서 요소들을 조회했었는데, document 객체는 문서 전체를 의미하는 요소(엘리먼트)로,
+        이럴경우에 조회 메서드는 문서 전체를 대상으로 요소들을 조회하게 된다.
+
+        여기서 이미 조회했던 메서드의 반환값에 다시 조회 메서드를 사용해서, 범위를 자유자제로 지정할 수 있다고 언급했는데,
+        왜냐하면, 조회 메서드 자체가, Element 객체 뒤에 메서드를 붙여서 사용할 때,
+        해당 Element 객체(요소)의 하위 요소를 대상으로 조회한 값을 반환하기 때문이였다.
+
+        따라서 요소의 조회를 제한하고 싶으면, 요소를 검색하고 싶은 영역을 담고있는 요소 객체에 조회 메서드를 붙여서 사용할 수 있다.
+        */
+
+        var li_list = document.getElementById('my_gong').getElementsByTagName('li')
+        console.group('아공')
+        for(var i = 0; i < li_list.length; i++){
+            console.log(li_list[i])
+        }
+    </script>
+</body>
+</html>
