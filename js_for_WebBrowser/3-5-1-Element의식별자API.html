@@ -67,7 +67,22 @@ Element(엘리먼트, 요소)를 제어하려면, 그 요소의 식별자가 필
         /*
         .classList
         .className 처럼 class 명을 알아내고, 수정할 수도 있는 속성(프로퍼티)다.
-        이것은 class 속성값들을 하나하나의 요소로 저장하는 
+        사실 .classList는 특정 요소(Element 객체)의 class 속성값들을 하나하나의 속성값을 원소로 가지는 돔 토큰 리스트(DOMTokenList)다.
+        이러한 .classList(=DOMTokenList)는 속성자체가 유사배열이기에, .length 로 원소의 개수를 알아내거나, [인덱스]로 특정 인덱스의 요소를 접근할 수 있다.
+        그리고 .classList를 마찬가지로 for문을 이용해서 순회도 할 수 있다.
+
+        그리고 여기서 추가로, 
+        Element객체.classList 에서
+        .add('추가할 class 속성값')을 덧붙여, (Element객체.classList.add('추가할 class 속성값'))
+        인자값으로 넘긴 class 속성값을 요소에 간편하게 추가할 수 있고,
+        .remove('삭제할 class 속성값')을 덧붙여, (Element객체.classList.remove('삭제할 class 속성값'))
+        인자값으로 넘긴 class 속성값을 요소에서 삭제할 수 있다.
+        .classNAme 때처럼, 변경할 때 변경할 상태를 일일이 대입해줄 필요없이 편리하게 사용할 수 있는 것이다.
+
+        추가로,
+        .toggle('class 속성값')을 덧붙여, (Element객체.classList.toggle('class 속성값'))
+        인자값으로 넘긴 class 속성값이 요소에 있으면 삭제,
+        요소에 없으면 추가하는 토글(:하나의 설정값으로 부터 다른값으로 전환하는 것)을 실행할 수 있다.
         */
     </script>
 </body>
