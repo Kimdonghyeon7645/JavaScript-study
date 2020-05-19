@@ -1,4 +1,8 @@
 <!--
+Element 객체에서는 getElementsBy~ 같은 메서드들을 실행한다면, 
+조회의 범위가 메서드의 대상이 되는 요소의 하위요소(엘리먼트)로 제한됬었다.
+
+이제 이번에는 jQuery에서는 어떻게 이렇게 조회의 범위를 제한할지 알아보자.
 -->
 
 <!DOCTYPE html>
@@ -10,13 +14,21 @@
 </head>
 <body>
     <ul>
-        <li id='bool' class='bosal'>나무상주시방불</li>
-        <li class='beob'>나무상주시방법</li>
-        <li class='seung'>나무상주시방승</li>
+        <li class='jm'>삼극주</li>
+        <ul id='joomun'>
+            <li class='jm'>이시이시위극</li>
+            <li>하사</li>
+            <li class='jm'>이시위극</li>
+            <li>하소서</li>
+        </ul>
     </ul>
+    
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
+        $('.jm', '#joomun').css('color', 'red')
+        /*
         
+        */
     </script>
 </body>
 </html>
