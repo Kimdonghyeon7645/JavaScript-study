@@ -1,0 +1,99 @@
+<!--
+Element(엘리먼트, 요소)의 속성 API,
+
+속성은 HTML에서 태그명만으로 부족한 부가정보이면서, 중요한 정보이기도 한데, 이러한 속성은 Element 객체의 속성 API로 제어할 수 있다.
+이것을 제어하는 API(기능)의 메서드는 아래와 같다.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element의 속성 API</title>
+</head>
+<body>
+    <ul>
+        <li id='bool' class='bosal'>나무상주시방불</li>
+        <li class='beob'>나무상주시방법</li>
+        <li class='seung'>나무상주시방승</li>
+    </ul>
+    <script>
+        var target = document.getElementById('bool')
+    
+        targetclassName = target.getAttribute('class')
+        console.log(targetclassName)   
+        /*
+        .getAttribute()
+        인자값으로 전달받은 속성명에 대해서, 해당 Element 객체(요소)의 속성값을 반환함.
+        */
+
+        target.setAttribute('class', 'bosal buddha')
+        console.log(target.getAttribute('class'))
+        /*
+        .setAttribute()
+        인자값으로 속성명과 속성값을 전달받아서, 해당 Element 객체(요소)에 속성명에 대한 속성값을 추가함.
+        */
+
+        targethasclassname = target.hasAttribute('class')
+        console.log(targethasclassname)
+        /*
+        .hasAttribute()
+        인자값으로 속성명을 전달받아서, 해당 Element 객체(요소)에 속성명이 있는지를,
+        true(참) 또는 false(거짓)으로 반환.
+        */
+
+        target.removeAttribute('class')
+        console.log(target.hasAttribute('class'))
+        /*
+        .removeAttribute()
+        인자값으로 속성명을 전달받아서, 해당 Element 객체(요소)에 대한 인자값의 속성을 삭제함.
+        */
+    </script>
+</body>
+</html>
+<!--
+이번에 배운 속성 API의 메서드가 하는 것을 보면, 식별자 API에서의 역할과 겹치는 부분이 있을 것이다.
+예를들어서, 식별자 API에서 요소객체.className = '변경할 클래스 속성값' 과 같이 요소객체의 클래스 속성값을 변경했던걸,
+요소객체.setAttribute('변경할속성명', '변경할속성값') 과 같이도 요소객체의 클래스 속성값을 변경할 수 있었다.
+이 두 방법은 결과적으로 하는 역할은 같아보여도 차이점을 가지고 있는데, 그것이 바로 속성과 프로퍼티의 차이다.
+
+속성 vs 프로퍼티
+사실 지금까지 둘을 같은 의미로 해석했었다. 근데 둘의 정확한 의미를 보면,
+브라우저가 웹페이지를 만나, HTML을 읽을 때(파싱을 할 때), DOM 객체를 자동으로 생성해주는 것을 배웠는데,
+이때 요소(Element 객체)에 있는 대부분의 표준 HTML 속성(Attribute)은 DOM 객체의 프로퍼티(property)가 된다.
+그러나 속성과 프로퍼티가 서로 연결되어는 있어도, 항상 동일하지는 않은 경우가 있다.
+
+바로 요소에 사용자가 임의로(맘대로) 정의한 속성은(웹 사용자의 행동으로 속성값이 변하는 부분) 속성과 프로퍼티의 값이 동일하지 않다! 
+이에 대해선 속성방식 vs 프로퍼티 방식에서 추가로 배워보자.
+
+
+속성 방식 vs 프로퍼티 방식
+이번 속성 API에서 배운 setAttribute(속성명, 속성값), getAttribute(속성명) 같은 방식은 속성을 직접 건드는 방식(쉽게말해 속성방식)이고,
+지난 식별자 API에서 배운 .식별자 같은 js의 프로퍼티를 접근하는 방식은, html 속성을 읽어온 프로퍼티를 건드는 방식(프로퍼티 방식)이다.
+
+이 두방법은 하는 역할은 같아도 차이점도 있다.
+우선 속도를 봤을때, 프로퍼티 방식이 간편하면서 속도도 빠르다. 
+
+대신에 위처럼, html 속성과 js 프로퍼티가 동일하지 않은 경우가 생길 수 있다. (바로 웹 사용자(유저)가 어떤 행동으로 속성값을 변경한 경우)
+이경우에는 속성에서 프로퍼티 방향으로 반영은 되도, 프로퍼티 방향에서 속성으로 변경된 값이 반영되지 않는다.
+근데 이런 기능을 백업으로 활용할 수 있다. 유저가 행동으로 속성값을 변경한 경우에, 프로퍼티만 반영이 될텐데, 이걸 이용해 속성값을 다시 프로퍼티에 대입해서 유저가 행동으로 속성값을 변경하기 전 값을 복구할 수 있다.
+
+추가로 프로퍼티방식에서는 class 속성을 .class로 사용하지 않고, .className으로 사용하는 이유가 이미 .class는 js에서 이미 쓰이는 키워드(예약어)라 그랬는데,
+이것때문에 속성방식에서는 속성명을 그대로 유지하지만, 프로퍼티방식에서는 속성명이 예약어와 겹치는 경우에 이름을 약간 수정해서 사용하기에, 
+실제 html 속성명과 프로퍼티방식에서 사용하는 식별자명이 다른 경우가 있다. (아래가 그 예시)
+class -> className
+readonly -> readOnly
+rowspan	-> rowSpan
+colspan -> colSpan
+usemap -> userMap
+frameborder ->frameBorder
+for ->htmlFor
+maxlength -> maxLength
+-->
+
+<!--
+참고 :
+https://cornswrold.tistory.com/165
+https://medium.com/@violetboralee/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%86%8D%EC%84%B1-attribute-%EA%B3%BC-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-property-d2f9b772addf
+-->

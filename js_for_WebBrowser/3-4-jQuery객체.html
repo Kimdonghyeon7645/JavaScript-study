@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQurey 객체</title>
+</head>
+<body>
+    <ul>
+        <li>자타일여</li>
+        <li>진속불이</li>
+        <li>무주열반</li>
+        <li>홍익중생</li>
+    </ul>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
+   <script>
+        var li = $('li')    // $() (=제이쿼리 함수)로 제이쿼리 객체 반환
+        console.log(li)
+
+        // jQuery 객체를 유사배열처럼 사용
+        console.log(li[3])
+        console.log(li.length)
+
+        // map으로 jQuery 객체 요소들을 하나씩 순회
+        li.map(function(index, elem){
+            console.log(index, elem);
+            $(elem).css('color', 'red');
+        })
+   </script> 
+</body>
+</html>
+<!--
+jQuery 객체:
+jQuery에 대해서는 3-2-1, 3-2-2 에서 알아봤었다. 여기서 jQuery 함수의 반환값이 jQuery 객체가 된다고 배웠는데, 이 제이쿼리 객체에 대해서 이번에 알아보자.
+
+이 jQuery(제이쿼리) 객체는 제이쿼리 함수에서 반환한, DOM 객체의 요소들을 묶은 것이며,
+DOM와 반대로 jQuery 객체에 메서드를 실행하면 객체 안의 선택된 DOM 객체요소(엘리먼트) 전체에 같은 작업(메서드)이 처리되게 된다. 
+(알아서 모든 DOM 요소에 작업을 일일이 하는것을 반복한다.)
+jQuery 객체는 요소'들'의 묶음(집합)이기에 jQuery 객체는 일종의 유사배열 형태이며, 배열처럼 사용할 수 있다.
+[인덱스] 로 객체의 인덱스에 해당하는 요소를 접근하거나, .length 로 객체의 요소 개수를 구하거나, for()문으로 반복해서 jQuery 객체의 모든 요소를 출력할 수도 있다.
+
+여기서 조심해야 될 것은, jQuery 객체의 요소 하나하나는 각각 DOM 객체이기 때문에, 그 요소를 jQuery 기능으로 제어하려면 
+그 요소 하나하나(DOM객체)를 $() (=제이쿼리 함수)로 감싸서 그 요소(DOM객체)를 jQuery객체로 변환한 다음 jQuery 기능을 사용해야 한다.
+(안그럼 DOM객체에 jQuery 문법을 쓰는것이 되기에 에러가 나고, jQuery 기능도 사용할 수 없다.)
+-->
+
+<!--
+jQuery객체.map()
+와 같이 .map() 메서드(함수)를 jQuery객체에 사용한다면, jQuery객체의 요소 하나하나를 모두 순회할 수 있다.
+이 방법은 map() 함수안에 인자로 함수를 넣게 되는데, 
+.map(function(index, elem){
+    // 함수 안 코드
+})
+와 같이 말이다.
+그러면 이 함수는 제이쿼리 객체의 첫번째 요소부터 마지막 요소까지 반복하면서, 인자로 받은 함수를 실행하게 된다.
+여기서 인자로 들어가는 함수에서는 매개변수가 2개를 받는데, 첫째는 요소의 인덱스, 둘째는 요소, DOM 객체가 각각 매개변수로 전달 받게 된다.
+
+그러니까 첫번째 요소부터 마지막 요소까지 인자값 함수가 요소 하나하나 마다 실행이 되는데, 해당 요소의 인덱스와 요소 DOM객체를 그 함수에 매개변수로 전달받아서, 사용할 수 있는 것이다.
+
+(파이썬에서 enumerate()함수와 동일하다.)
+-->
+
+<!--
+jQuery 객체에도 당연하게 API가 있다.
+이거에 대한 레퍼런스는 https://api.jquery.com/ 를 참고하자.
+여기서 .css() .attr() 메서드 말고 다양한 API를 위 사이트에서 확인하자. 
+-->

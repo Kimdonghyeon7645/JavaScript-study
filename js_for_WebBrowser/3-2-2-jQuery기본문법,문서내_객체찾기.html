@@ -1,0 +1,50 @@
+<!--
+ jQuery 의 기본 문법 : 
+jQuery 를 사용하면, DOM보다 효율적으로 필요한 객체를 검색할 수 있는데, jQuery는 css 선택자로 객체를 조회한다.
+제이쿼리는 기본적으로 $으로 시작해서 $() 라는 형태로 시작한다.
+이때 $() 는 제이쿼리 함수로, 인자값에 따른 제이쿼리 객체를 반환한다. 그리고 흔히 인자값으로, 검색할 객체의 css 선택자가 들어간다.
+
+그렇게해서, 찾은 제이쿼리 객체가 반환되면, 제이쿼리 객체의 메서드를 호출해서 .css('속성', '속성값'); 처럼 css를 변경할 수도 있고,
+예전의 .prepend() 로 원하는 요소를 제이쿼리 객체안에서 앞쪽에 추가할 수 있다. (그외에도 제이쿼리 객체의 메서드는 다양하다.)
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기초문법</title>
+</head>
+<body>
+    <ol>
+        <li id='title'>제행무상</li>
+        <li>제법무아</li>
+        <li>일체개고</li>
+        <li>열반적정</li>
+    </ol>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
+    <script>
+        jQuery(document).ready(function($){
+            $('li').css('color', 'red')
+        })
+        // 위의 jQuery 문법이 아래 js 문법과 수행결과가 같음.
+        // var lis = document.getElementsByTagName('li');
+        // for(var i=0; i&lt;lis.length; i++){
+        //     lis[i].style.color='red';   
+        // }
+
+        jQuery(document).ready(function($){
+            $('#title').css('color', 'black').css('textDecoration', 'underline');
+        })
+        // 위의 코드와 아래 코드의 수행결과가 같음.
+        // var li = document.getElementById('title');
+        // li.style.color='red';
+        // li.style.textDecoration='underline';
+    </script> 
+</body>
+</html>
+<!--
+위같이 $()으로 반환받은 jQuery 객체를 다양한 메서드로 제어할 수 있으며, 메서드는 여러개를 연달아 사용할 수 있다. (체이닝 방식 가능)
+아래의 js 로 요소를 제어하는 것과 수행하는 것은 동일하지만 코드가 jQuery가 더 간략한 것을 볼 수 있다.
+
+(대신 3-2-1 에서 처럼 jQuery는 오늘날 js 개선으로 이제 쓰일 필요가 의문이 되었다는 것을 항상 염두해 두자.)
+-->

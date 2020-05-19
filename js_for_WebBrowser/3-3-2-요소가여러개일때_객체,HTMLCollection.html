@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-3-2 js</title>
+</head>
+<body>
+    <ul>
+        <li>재미있게</li>
+        <li>영어공부</li>
+        <li>해보는건</li>
+        <li>어떨까요</li>
+    </ul>
+    <script>
+        // 객체의 요소를 alert() 의 메세지로 띄우면 문자열로 변환되면서, 요소의 내용을 확인 할 수 없기에,
+        // console(콘솔) 을 이용해서 객체의 요소들을 출력했다.
+        
+        console.group('before')     // console.group() 함수를 이용해서 log()로 출력할 것들을 그룹으로 묶어줄 수 있다. 인자값으로 넣는 문자열이 그룹의 이름이 된다.
+        var lis = document.getElementsByTagName('li')
+        for (var i = 0; i < lis.length; i++){
+            console.log(lis[i])
+        }
+        console.groupEnd()  // .groupEnd() 함수로 그룹화할 범위의 끝을 정해줄 수 있다. (group()함수뒤부터 이함수앞까지가 그룹으로 묶인다.)
+
+        console.group('after')
+        lis[1].parentNode.removeChild(lis[1])   // 이건 나중에 배울 문법인데, 간단하게 요소중 1인덱스의 요소를 삭제하는 코드다.
+        for (var i = 0; i < lis.length; i++){
+            console.log(lis[i])
+        }
+        console.groupEnd()
+    </script>
+</body>
+</html>
+
+<!--
+HTMLCollection 은 HTMLElement 와 반대로, 여러개의 요소가 객체안의 원소들로 저장돼있는, 배열같은(유사배열) 객체를 말한다.
+getElementsByTagName, getElementsByClassName 함수 같은 걸로 반환할 수 있었던 Nodelist 와 객체의 이름은 달라도 성질은 비슷하다.
+
+우선 둘다 읽기전용의 유사 배열 객체이며, (length 속성이 있고, 원소를 []으로 접근할 수 있다.)
+그렇기에 반복문을 사용해서, 모든 원소의 값을 출력할 수도 있다. (이렇게 차례대로 모든 원소를 접근하는 걸 순회라고도 한다.)
+(이에 대한 내용은 이미 3-1 에서 예제와 함께 이미 설명했다.)
+
+
+그리고 추가로, 두 객체 모두 선언할 때 문서의 어떤 특정 순간에서의 요소들을 가져오는 것이 아니라,
+실시간으로, (살아있는?) 상태의 요소들을 객체로 해서 가져온다. 
+따라서 객체를 가져오고 나서, 문서상에서 객체의 원소를 삭제할 경우에는, 삭제된 원소가 객체에서도 실시간으로 반영된다.
+그래서 이러한 객체들은 문서가 변하면, 객체도 실시간으로 변화하게 된다.
+
+(참고 : https://iamawebdeveloper.tistory.com/50)
+-->

@@ -1,0 +1,89 @@
+<!--
+Element(엘리먼트, 요소)를 제어하려면, 그 요소의 식별자가 필요하다.
+상식적으로, 이름이 없는 요소를 찾을 수는 없을 것이다. 이름이 없으면 부를 수가 없으니까,
+여기서의 이름이 바로 식별자이며, HTML의 요소에서는 요소명, id명, class명 같은 것들이 식별자로 쓰인다.
+
+요번에 배우는 Element의 식별자 API에서는 이러한 식별자를 가져오고 변경하는 것을 배운다.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element의 식별자 API</title>
+</head>
+<body>
+    <ul>
+        <li>상구보리</li>
+        <li>하화중생</li>
+        <li>자타일여</li>
+        <li id='hong'>홍익인간!</li>
+    </ul>
+
+    <script>
+        var hong = document.getElementById('hong')
+        alert(hong.tagName)     // LI (<li> 라는 태그명) 출력
+        /*
+        .tagName
+        특정 요소(Element 객체)의 태그 이름을 알아내는 속성(프로퍼티)다.
+        이 걸로 요소의 태그이름을 가져올 수는 있어도, 태그이름을 변경할 수는 없다.
+        */
+
+        
+        alert(hong.id)      // hong (<li id='hong'>에서 id 속성값(id명)) 출력
+        alert(document.getElementsByTagName('li')[0].id)    // id 속성값이 없으면 공백을 출력
+        hong.id = 'hongik'  // id명(id 속성값)을 변경할 수도 있음.
+        alert(hong.id)      // 변경한 id명을 출력
+        /*
+        .id
+        특정 요소(Element 객체)의 id명을 알아내는 속성(프로퍼티)다.
+        이렇게 해서 id명(해당 요소의 id 속성값)을 가져올 수도 있고, 대입연산자(=)로 .id에 변경할 값을 대입해서, 요소의 id명을 변경도 할 수 있다.
+        */
+
+
+        hong.className = 'bosal'    // class명(class 속성값)도 마찬가지로 변경할 수 있음.
+        alert(hong.className)       
+        hong.className = hong.className + ' man'    // class명을 추가할 수도 있음.
+        alert(hong.className)
+        /*
+        .className
+        특정 요소의 class명을 알아내는 속성(프로퍼티)디.
+        .id 처럼 class도 .class 속성(프로퍼티)로 가져오지 않는 이유가 궁금할 수 있는데, 사실 자바스크립트에서 .class 라는 것이 이미 예약어로 쓰이고 있어서 그렇다. 
+        아무튼 이 속성(프로퍼티)으로 class명을 가져올 수도 있고, 대입연산자(=)로 변경도 할 수 있다.
+
+        클래스명(class 속성값)이 하나일 때는 상관없을 수 있는데, 클래스명(class 속성값)이 여러개일 경우에는 .className 이 불편한 부분이 있다.
+        클래스 속성값을 변경할 때는 대입연산자(=)로 변경하니까 클래스 속성값이 한개든지 여러개든지, 대입연산자(=)를 통해서 전체 클래스 속성값을 변경할 수만 있는데,
+        따라서 여러개의 클래스명(속성값)중에서 하나의 속성값(클래스명)을 변경하거나 삭제하고 싶어도, 꼭 찝어서 지울수는 없고, 변경된 상태를 다시 .className에 대입해 주어야 한다.
+        
+        (그래서 10개 클래스명중에서 하나의 클래스명을 지우거나 변경할 때도, 변경에 관련없는 9개의 클래스명도 같이 사용해서 대입해 주어야하는 불편함이 있다. 
+        이 때문에 불편함이 있는데, 아래에서 나오는 .classList 에서 이런 문제를 해결한 사용법을 제공한다.)
+        */
+
+
+        for(var i = 0; i < hong.classList.length; i++){
+            alert('인덱스 ' + i + ' : ' + hong.classList[i])
+        }
+        /*
+        .classList
+        .className 처럼 class 명을 알아내고, 수정할 수도 있는 속성(프로퍼티)다.
+        사실 .classList는 특정 요소(Element 객체)의 class 속성값들을 하나하나의 속성값을 원소로 가지는 돔 토큰 리스트(DOMTokenList)다.
+        이러한 .classList(=DOMTokenList)는 속성자체가 유사배열이기에, .length 로 원소의 개수를 알아내거나, [인덱스]로 특정 인덱스의 요소를 접근할 수 있다.
+        그리고 .classList를 마찬가지로 for문을 이용해서 순회도 할 수 있다.
+
+        그리고 여기서 추가로, 
+        Element객체.classList 에서
+        .add('추가할 class 속성값')을 덧붙여, (Element객체.classList.add('추가할 class 속성값'))
+        인자값으로 넘긴 class 속성값을 요소에 간편하게 추가할 수 있고,
+        .remove('삭제할 class 속성값')을 덧붙여, (Element객체.classList.remove('삭제할 class 속성값'))
+        인자값으로 넘긴 class 속성값을 요소에서 삭제할 수 있다.
+        .classNAme 때처럼, 변경할 때 변경할 상태를 일일이 대입해줄 필요없이 편리하게 사용할 수 있는 것이다.
+
+        추가로,
+        .toggle('class 속성값')을 덧붙여, (Element객체.classList.toggle('class 속성값'))
+        인자값으로 넘긴 class 속성값이 요소에 있으면 삭제,
+        요소에 없으면 추가하는 토글(:하나의 설정값으로 부터 다른값으로 전환하는 것)을 실행할 수 있다.
+        */
+    </script>
+</body>
+</html>
