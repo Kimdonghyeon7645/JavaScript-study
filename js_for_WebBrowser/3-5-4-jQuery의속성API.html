@@ -1,4 +1,8 @@
 <!--
+jQuery 객체에서도 Element API에 해당하는 기능을 구사한다.
+그중에서 jQuery 객체의 메소드 중 Element의 속성 API와 대응되는 메서드는, attr가 있다.
+이것은 Element 객체의 getAttribute, setAttribute와 같으며, 
+removeAttribute 와 대응되는 jQuery 메서드는 removeAttr 이가 있다.
 -->
 
 <!DOCTYPE html>
@@ -6,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Element의 속성 API</title>
+    <title>jQuery 객체의 속성 API</title>
 </head>
 <body>
     <ul>
@@ -14,8 +18,31 @@
         <li class='beob'>나무상주시방법</li>
         <li class='seung'>나무상주시방승</li>
     </ul>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
+        var t = $('#bool')
+        console.log(t)      // 해당 jQuery 객체(li class='bosal')
+        console.log(t.attr('class'))    // bosal(원래 속성값)
+        t.attr('class', 'buddha')
+        console.log(t.attr('class'))    // buddha(변경한 속성값)
+        /*
+        .attr()
+        jQuery 객체뒤에 .attr('속성명')으로 해당 객체의 속성에 대한 속성값을 접근할 수 있다.
+        이것으로, .getAttribute() 처럼 속성값을 구할 수도 있고,
+        .setAttribute() 처럼 속성값을 변경할 때는,
+        .attr('속성명', '바꿀속성값') 과 같이 해서 속성값을 변경할 수도 있다.
+        */
 
+        t.removeAttr('class')
+        console.log(t.attr('class'))    // undefined(삭제한 속성값)
+        /*
+        .removeAttr()
+        .removeAttribute 처럼 속성값을 삭제할 때는, jQuery에서는 .removeAttr('삭제할 속성명')으로 해당 속성을 제거할 수 있다.
+        */
     </script>
 </body>
 </html>
+
+<!--
+
+-->
