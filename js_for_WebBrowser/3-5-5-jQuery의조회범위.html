@@ -27,12 +27,29 @@ Element 객체에서는 getElementsBy~ 같은 메서드들을 실행한다면,
     <script>
         $('.jm', '#joomun').css('color', 'red')
         /*
+        $() (=제이쿼리함수)로 jQuery 객체를 반환할 때, 
+        괄호() 안에 다른 선택자를 인자값을 추가해서, 조회할 범위를 그 선택자가 가리키는 범위로 제한한다.
         
+        ex) $('.jm', '#joomun') 
+        이라면, .jm(class가 jm인) 를 조회하는 것은 변함없는데, 
+        여기서 두번째 인자값인 #joomun(id가 joomun인) 의 범위안에서 조회하게 된다.
+
+        이렇게 조회할때 제한하는 범위를 selector context 라고 한다.
+        근데 이렇게 인자를 한개 추가해서 범위를 제한해도 되지만, 걍 인자 하나로도 할 수 있다.
+        ex) $('.jm', '#joomun') == $('#joomun .jm')
+        */
+
+        $('#joomun').css('background-color', 'green').find('.jm').css('color', 'white')
+        /*
+        그리고 .find() 메서드를 활용해서도 해당 jQuery 객체 내에서 요소를 조회할 수 있다.
+        ex) $('#joomun').find('.jm') == $('.jm', '#joomun') == $('#joomun .jm')
+        
+        이 메서드는, $() 함수처럼 작업의 대상을 맨처음 한번 반환하면, 끝이 아니라, .find()를 jQuery객체라면 어디서든지 여러번도 붙여서,
+        체인(객체.메서드()에 .메서드()를 뒤에 붙여 마치 체인처럼 만드는 코드의 구조)을 끊지 않고도, 그 줄 안에서 작업의 대상(jQuery 객체)를 변경할 수 있다.
+        ex) $('#joomun').css('color')
+        
+        대신 .find() 를 너무 복잡하게 사용하면, 가독성이 떨어져 유지보수에 어려움이 있다. 주의!
         */
     </script>
 </body>
 </html>
-
-<!--
-
--->
