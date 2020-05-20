@@ -10,7 +10,7 @@ Node 객체에서는 각각의 Node 간에 관계 정보를 가지고 있는 API
     <title>Node 관계 API</title>
 </head>
 <body>
-    <ul>
+    <ul id='daoduc'>
         도덕경 1장
         <li>도라고 한것은 항상 그대로가 아니며,</li>
         <li>이름은 항상 그이름 그대로가 아니다.</li>
@@ -22,7 +22,42 @@ Node 객체에서는 각각의 Node 간에 관계 정보를 가지고 있는 API
         <li>이 현묘함이 엄청나 모든 미묘한 것(직관, 반야)들이 나오는 문이된다.</li>
     </ul>
     <script>
-        //
+        var doo = document.getElementById('daoduc')
+
+        console.log(doo.childNodes)
+        /* .childNodes
+        해당 Node 객체의 자식노드들을 유사 배열에 담아서 반환하는 프로퍼티다.
+        신기한 것은 반환되는 객체에 태그로 된 요소만 있는 게 아니라 텍스트를 써서 그런지, text도 원소로 들어가있다.
+        */
+
+        console.log(doo.firstChild)
+        /* .firstChild
+        해당 Node 객체의 첫번째(first) 자식노드를 반환하는 프로퍼티다.
+        */
+        
+        console.log(doo.lastChild)
+        /* .lastChild
+        해당 Node 객체의 마지막(last) 자식노드를 반환하는 프로퍼티다.
+        */
+
+        var doo_ele = doo.childNodes[2]
+        console.log(doo_ele)
+    
+        console.log(doo_ele.nextSibling)
+        console.log(doo_ele.nextSibling.nextSibling.nextSibling)
+        /* .nextSibling
+        해당 Node 객체의 다음(next) 형제노드를 반환하는 프로퍼티다.
+        */
+
+        console.log(doo_ele.previousSibling)
+        /* .previousSibling
+        해당 Node 객체의 이전(previous) 형제노드를 반환하는 프로퍼티다.
+        */
+
+        console.log(doo_ele.parentNode)
+        /* .parentNode
+        해당 Node 객체의 부모(parent) 노드를 반환하는 프로퍼티다.
+        */
     </script>
 </body>
 </html>

@@ -19,6 +19,7 @@ Node.firstChild
 Node.lastChild
 Node.nextSibling
 Node.previousSibling
+Node.parentNode
 Node.contains()
 Node.hasChildNodes()
 
