@@ -1,5 +1,7 @@
 <!--
 Node 객체 수정 API,
+말처럼 Node 를 추가하거나 제거, 변경할 수 있다.
+이에 대한 API만 잘 알아두면 말이다.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +11,45 @@ Node 객체 수정 API,
     <title>Node 수정 API</title>
 </head>
 <body>
-    <ul id='''>
+    <ul id='tar'>
         <li>어리석게 탐진치로 자해해타를 행한 업 참회합니다.</li>
         <li>상락아정한 참나 부지런히 찾지 않은 업 참회합니다.</li>
         <li>모든 생각을 고요하게 하여 시작도 끝도 찾을 수 없는 무위에 다다르겠습니다.</li>
         <li>무위에 안주함에 있어 평탄히 만들어 결국 모두 깨닫게 하겠습니다.</li>
     </ul>
     <script>
-        
+    function sunhoe(target){
+        console.group('순회')
+        for(var i = 0; i < target.getElementsByTagName('li').length; i++){
+            console.log(target.getElementsByTagName('li')[i])
+        }
+        console.groupEnd()
+    }
+    /*
+    노드 추가 API
+    .appendChild(추가할요소) 
+    : 노드의 마지막 자식으로 요소(엘리먼트) 추가
+    .insertBefore(추가할요소, 추가될요소뒤의엘리먼트) 
+    : 2번째 인자(요소)의 바로앞에 요소(엘리먼트) 추가
+    
+    근데 노드를 추가하는 API는 인자값으로 전달받은 요소(엘리먼트)를 추가하는 것이기에,
+    일단 요소(엘리먼트)를 만들어 줘야 된다.
+
+    이 엘리먼트(요소)를 만들어주는 기능(API)은 document 객체에 있는데, 다른말로 하자면, 노드를 생성하는 API다.
+    (Node 객체의 추가 API는 만들어진 노드를 추가하는 API고, document 객체의 API는 노드를 만드는 API다.)
+    document.createElement('[태그명]') : 요소(엘리먼트) 노드를 만든다.
+    document.createTextNode('[텍스트내용]') : 텍스트 노드를 만든다.
+    */
+
+    var target = document.getElementById('tar')
+    var li_ele = document.createElement('li')   // 요소 노드를 생성
+    var text_ele = document.createTextNode('나무본사아미타불_()_')  // 텍스트 노드를 생성
+    li_ele.appendChild(text_ele)    // 생성한 요소 노드(li)안에 생성한 텍스트 노드를 추가 (텍스트가 없는 요소(엘리먼트)는 빈 엘리먼트가 됨)
+    target.appendChild(li_ele)      // target(ul)안에 생성한 요소 노드(li)를 추가
+    sunhoe(target)
+
+    target.insertBefore(li_ele, target.firstChild)  // 첫번째 자식노드 앞에 생성한 요소 노드(li)를 추가
+    sunhoe(target)
     </script>
 </body>
 </html>
