@@ -50,6 +50,29 @@ Node 객체 수정 API,
 
     target.insertBefore(li_ele, target.firstChild)  // 첫번째 자식노드 앞에 생성한 요소 노드(li)를 추가
     sunhoe(target)
+    
+
+    /*
+    노드 제거 API
+    .removeChild(삭제할노드)
+    로 인자값으로 넘겨준 자식노드를 삭제한다.
+    주의할 점은, 메서드의 대상이 되는, (해당Node객체).removeChild(삭제할요소) 에서의 (해당Node객체)가 삭제할 요소의 부모 노드 객체여야 한다.
+    API의 메서드 이름자체도 removeChild, 자식을 삭제한다(어감이 이상하다;;) 이다.
+    */
+    var rm_target = document.getElementById('tar').firstChild
+    rm_target.parentNode.removeChild(rm_target)     // .parentNode 로 해당 노드의 부모 노드로 대상을 이동할 수 있다. 그후에 삭제 메서드를 사용한다.
+    sunhoe(target)
+
+    
+    /*
+    노드 바꾸기 API
+    .replaceChild(새노드, 예전노드)
+    두번째 인자로 전달받은 노드를, 첫번째 인자로 전달받은 노드로 갈아끼운다.
+    마찬가지로, 부모 노드에서 메서드를 실행해서, 자식 노드를 바꾸는 것이다.
+    */
+    var rp_target = document.getElementById('tar').lastChild
+    rp_target.parentNode.replaceChild(li_ele, rp_target)    // 아까 생성한 요소(li)를 바꿔치기 한다.
+    sunhoe(target)
     </script>
 </body>
 </html>
