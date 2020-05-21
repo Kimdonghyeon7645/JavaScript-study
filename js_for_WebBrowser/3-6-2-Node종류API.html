@@ -1,5 +1,7 @@
 <!--
-Node 객체 종류 API
+Node 객체 종류 API,
+Node 객체에 대한 작업을 하다 보면, 지금 작업하는 노드가 어떤 타입인지 알아낼 필요가 있는데,
+이때 종류 API(nodeType, nodeName)를 사용해서, 해당 노드의 타입이나 이름(태그명)을 알아낼 수 있다.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,69 @@ Node 객체 종류 API
         <li>이 현묘함이 엄청나 모든 미묘한 것(직관, 반야)들이 나오는 문이된다.</li>
     </ul>
     <script>
-       
+        for(var name in Node){
+            console.log(Node[name], name)
+        }
+        /*
+        Node 객체에는 다양한 요소가 있는데, 객체를 for in문을 활용해서 모든 요소(프로퍼티, 속성)를 순회할 수 있던 것을 활용해서,
+        마찬가지로 Node 객체의 모든 요소(프로퍼티, 속성)을 출력할 수 있다. 
+        그렇게 해서 Node 객체의 모든 프로퍼티를 출력해보면, 아래와 같다.
+        
+        1  "ELEMENT_NODE"
+        2  "ATTRIBUTE_NODE"
+        3  "TEXT_NODE"
+        4  "CDATA_SECTION_NODE"
+        5  "ENTITY_REFERENCE_NODE"
+        6  "ENTITY_NODE"
+        7  "PROCESSING_INSTRUCTION_NODE"
+        8  "COMMENT_NODE"
+        9  "DOCUMENT_NODE"
+        10 "DOCUMENT_TYPE_NODE"
+        11 "DOCUMENT_FRAGMENT_NODE"
+        12 "NOTATION_NODE"
+        1  "DOCUMENT_POSITION_DISCONNECTED"
+        2  "DOCUMENT_POSITION_PRECEDING"
+        4  "DOCUMENT_POSITION_FOLLOWING"
+        8  "DOCUMENT_POSITION_CONTAINS"
+        16 "DOCUMENT_POSITION_CONTAINED_BY"
+        32 "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC"
+
+        이것으로 노드의 다양한 타입을 위같은 리스트 형식으로 볼 수 있다.
+        */
+        
+        var doo = document.getElementById('daoduc')
+        console.log(doo, doo.nodeType, doo.nodeName)
+        console.log(doo.childNodes[0], doo.childNodes[0].nodeType, doo.childNodes[0].nodeName)
+        console.log(doo.childNodes[1], doo.childNodes[1].nodeType, doo.childNodes[1].nodeName)
+        console.log(document, document.nodeType, document.nodeName)
+        /*
+        이제 이것을 위같이 .nodeType 과 .nodeName 으로 각각 노드의 타입과 노드의 이름을 구할 수 있다.
+        
+        .nodeType 으로 해당 Node 객체의 타입을 가져올 때, 이 타입은 위에 봤던 다양한 노트 타입에서, 그 노드 타입이 의미하는 숫자를 반환한다.
+        이걸로 예를들어, (Node객체).nodeType === 1 과 같이 해당 Node객체가 타입이 1(ELEMENT_NODE)일때만 true를 반환하게 할 수 있다.
+
+        .nodeName 으로는 해당 Node 객체의 이름을 가져오는데, 요소일 경우엔 태그명을 가져오며, 
+        태그가 아닌 요소들은 #text, #document 와 같이, 자신의 객체에 맞는 이름을 #(객체이름)으로 가져온다.
+        */
+
+
+        function traverse(target, callback){
+            if(target.nodeType === 1){
+                callback(target)
+                var c = target.childNodes
+                for(var i=0; i<c.length; i++){
+                    traverse(c[i], callback)      
+                }   
+            }
+        }
+        // 이렇게 .nodeType를 활용해서, 
+        // 함수에 넘긴 Node 객체가 요소(element)일 경우에만 출력하고, (target.nodeType === 1)
+        // 그 요소의 하위요소도 재귀함수로 넘겨서 요소가 없을 때까지 반복하는 재귀함수를 만들었다. (traverse(c[i], callback))
+        // 이렇게 위 함수로는 같은 계층의 자식 노드만 순회하는 것이아니라, 자식의 모든 자손 노드까지, 요소에 포함된 모든 하위 요소를 순회할 수 있다.
+        traverse(document.getElementsByTagName('body')[0], function(elem){
+            console.log(elem);
+        });
+        // 참고로 callback 으로 들어갈 함수에서는, 인자를 받아 그것을 콘솔에 출력하는 콜백함수를 넣었다.
     </script>
 </body>
 </html>
