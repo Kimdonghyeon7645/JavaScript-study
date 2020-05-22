@@ -14,6 +14,8 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
     <input type='button' value='Node 삽입' id='insert'>
     <input type='button' value='Node 삭제' id='remove'>
     <input type='button' value='Node 바꾸기' id='replace'>
+    <input type='button' value='Node 복사' id='copy'>
+    <input type='button' value='Node 이동' id='move'>
     <input type='button' value='Node 초기화' id='reset'>
 
     <ul class='tar'>
@@ -23,10 +25,14 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
         <li>예시2</li>
     </ul>
 
+    <ul class='other'>
+    </ul>
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
         $('#reset').click(function(){
-            $('li', '.tar').remove()
+            $('div').remove()
+            $('li').remove()
             $('.tar').append('<li>다시돌아온 예시</li>')
         })
 
@@ -76,6 +82,18 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
         replaceAll 메서드는, new.replaceAll(old) 이고,
         replaceWith 메서드는, old.replaceWith(new) 이다.
         변경 전 상태(=대상 노드, old)와 변경 후 상태(new)가 두 메서드에서 위치를 반대로 전달받아서 사용하니 주의하자.
+        */
+
+        $('#copy').click(function(){
+            $('.other').append($('.tar li').clone())
+        })
+        $('#move').click(function(){
+            $('.other').append($('.tar li'))
+        })
+        /*
+        jQuery 에서 노드를 clone 메서드로 복사할 수 있다. 
+        이렇게 복사되서 만들어진 노드, 요소(엘리먼트)를 아까 노드를 추가하는 메서드를 사용해서 원하는 위치에 복사해줄 수 있다.
+        여기서 복사가 아니라, 잘라내기->붙여넣기 방식으로 노드를 이동하고 싶으면, clone 메서드를 쓰지 않으면 된다.
         */
     </script>
 </body>
