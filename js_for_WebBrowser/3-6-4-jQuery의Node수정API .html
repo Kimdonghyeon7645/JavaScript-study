@@ -20,13 +20,20 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
+        function jquery_map(groupName, callback){
+            console.group(groupName)
+            
+        }
+
+        jquery_map('기본 상태', print)
         $('.tar').before('<p>before 위치</p>')
         $('.tar').after('<p>after 위치</p>')
         $('.tar').prepend('<li>prepend 위치</li>')
         $('.tar').append('<li>append 위치</li>')
+        jquery_map('노드 추가 후', print)
         /*
         jQuery 에서 노드를 추가하는 메서드는 4가지다.
-        
+
         .before()
         : 해당 노드의 바로 앞에 노드를 추가 (형 노드로 추가)
         .after()
@@ -35,6 +42,18 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
         : 해당 노드안에서 가장 앞에 노드를 추가 (첫째 자식 노드로 추가)
         .append()
         : 해당 노드안에서 가장 뒤에 노드를 추가 (막내 자식 노드로 추가)
+        */
+
+        $('li', '.tar').empty()
+        $('p').remove()
+        jquery_map('노드 삭제 후', print)
+        /*
+        jQuery 의 노드 삭제 메서드는 remove, empty가 있다.
+
+        .remove()
+        : 선택된 해당 요소(엘리먼트)를 제거
+        .empty()
+        : 선택된 해당 요소(엘리먼트)의 텍스트 노드를 제거
         */
     </script>
 </body>
