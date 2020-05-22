@@ -11,6 +11,11 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
     <title>jQuery(제이쿼리)의 Node 수정 API</title>
 </head>
 <body>
+    <input type='button' value='Node 삽입' id='insert'>
+    <input type='button' value='Node 삭제' id='remove'>
+    <input type='button' value='Node 바꾸기' id='replace'>
+    <input type='button' value='Node 초기화' id='reset'>
+
     <ul class='tar'>
         <li>예시1</li>
     </ul>
@@ -20,17 +25,17 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
-        function jquery_map(groupName, callback){
-            console.group(groupName)
-            
-        }
+        $('#reset').click(function(){
+            $('li', '.tar').remove()
+            $('.tar').append('<li>다시돌아온 예시</li>')
+        })
 
-        jquery_map('기본 상태', print)
-        $('.tar').before('<p>before 위치</p>')
-        $('.tar').after('<p>after 위치</p>')
-        $('.tar').prepend('<li>prepend 위치</li>')
-        $('.tar').append('<li>append 위치</li>')
-        jquery_map('노드 추가 후', print)
+        $('#insert').click(function(){
+            $('.tar').before('<div>before 위치</div>')
+            $('.tar').after('<div>after 위치</div>')
+            $('.tar').prepend('<li>prepend 위치</li>')
+            $('.tar').append('<li>append 위치</li>')
+        })
         /*
         jQuery 에서 노드를 추가하는 메서드는 4가지다.
 
@@ -44,16 +49,33 @@ jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
         : 해당 노드안에서 가장 뒤에 노드를 추가 (막내 자식 노드로 추가)
         */
 
-        $('li', '.tar').empty()
-        $('p').remove()
-        jquery_map('노드 삭제 후', print)
+        $('#remove').click(function(){
+            $('li', '.tar').empty()
+            $('div').remove()
+        })
         /*
-        jQuery 의 노드 삭제 메서드는 remove, empty가 있다.
+        jQuery 에서 노드를 삭제하는 메서드는 remove, empty가 있다.
 
         .remove()
         : 선택된 해당 요소(엘리먼트)를 제거
         .empty()
         : 선택된 해당 요소(엘리먼트)의 텍스트 노드를 제거
+        */
+
+        $('#replace').click(function(){
+            $('<li>바꿔치기!</li>').replaceAll('li', '.tar')
+            $('.tar li').replaceWith('<li>다시 바꿔치기!</li>')
+        })
+        /*
+        jQuery 에서 노드를 변경하는 메서드는, replaceAll, replaceWith가 있다.
+        Node 객체는 노드를 변경할때, 그 노드의 부모 노드에서 자식노드를 변경하는 메서드를 사용했었지만,
+        jQuery 객체에서 노드를 변경할 때는, 그럴필요없이 대상 노드를 바로 변경한다.
+        
+        대신에 두 노드를 변경하는 메서드에서 둘의 차이가 있다.
+        old -> new 로 노드의 상태를 변경한다고 하면,
+        replaceAll 메서드는, new.replaceAll(old) 이고,
+        replaceWith 메서드는, old.replaceWith(new) 이다.
+        변경 전 상태(=대상 노드, old)와 변경 후 상태(new)가 두 메서드에서 위치를 반대로 전달받아서 사용하니 주의하자.
         */
     </script>
 </body>
