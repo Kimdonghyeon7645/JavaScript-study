@@ -1,5 +1,7 @@
 <!--
 jQuery에서 Node 객체 수정 API,
+jQuery를 이용해서 노드를 제어하는 방법은, Node 객체의 수정 API처럼, 추가, 제거, 바꾸기 말고도,
+jQuery에선 추가로 노드의 복사와 이동도 제어 할 수 있다.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +11,31 @@ jQuery에서 Node 객체 수정 API,
     <title>jQuery(제이쿼리)의 Node 수정 API</title>
 </head>
 <body>
-    <ul id='tar'>
-        <li>어리석게 탐진치로 자해해타를 행한 업 참회합니다.</li>
-        <li>상락아정한 참나 부지런히 찾지 않은 업 참회합니다.</li>
-        <li>모든 생각을 고요하게 하여 시작도 끝도 찾을 수 없는 무위에 다다르겠습니다.</li>
-        <li>무위에 안주함에 있어 평탄히 만들어 결국 모두 깨닫게 하겠습니다.</li>
+    <ul class='tar'>
+        <li>예시1</li>
     </ul>
+    <ul class='tar'>
+        <li>예시2</li>
+    </ul>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js'></script>
     <script>
+        $('.tar').before('<p>before 위치</p>')
+        $('.tar').after('<p>after 위치</p>')
+        $('.tar').prepend('<li>prepend 위치</li>')
+        $('.tar').append('<li>append 위치</li>')
+        /*
+        jQuery 에서 노드를 추가하는 메서드는 4가지다.
         
+        .before()
+        : 해당 노드의 바로 앞에 노드를 추가 (형 노드로 추가)
+        .after()
+        : 해당 노드의 바로 뒤에 노드를 추가 (동생 노드로 추가)
+        .prepend()
+        : 해당 노드안에서 가장 앞에 노드를 추가 (첫째 자식 노드로 추가)
+        .append()
+        : 해당 노드안에서 가장 뒤에 노드를 추가 (막내 자식 노드로 추가)
+        */
     </script>
 </body>
 </html>
