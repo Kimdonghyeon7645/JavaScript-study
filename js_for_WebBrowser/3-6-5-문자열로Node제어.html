@@ -44,7 +44,16 @@
         대신에 이것들로 값을 변경할때는 HTML 태그부분을 그대로 사용한 문자열을 대입해 주어야 한다.
         */
 
-        
+        target = document.getElementById('hyot-hong')
+        target.insertAdjacentHTML('beforebegin', '<p>beforebegin</p>')
+        target.insertAdjacentHTML('afterbegin', '<p>afterbegin</p>')
+        target.insertAdjacentHTML('beforeend', '<p>beforeend</p>')
+        target.insertAdjacentHTML('afterend', '<p>afterend</p>')
+        /*
+        문자열로 노드를 변경할때, 더 정교하게 원하는 위치의 노드를 변경하기 위해서,
+        .insertAdjacentHTML() 메서드를 활용할 수 있다.
+        첫번째 인자로 원하는 위치를 문자열로 넘기고, 두번째 인자로 변경할 노드의 내용을 넣으면 된다.
+        */
     </script>
 </body>
 </html>
