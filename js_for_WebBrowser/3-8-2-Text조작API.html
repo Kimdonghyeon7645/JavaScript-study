@@ -23,33 +23,55 @@ substringData()     // 서브 텍스트 조작
         <li>start(시작인덱스) :<input type="text" id="start" value="" placeholder="시작 인덱스를 입력하세요"></li>
         <li>end(끝인덱스) : <input type="text" id="end" value="" placeholder="끝 인덱스를 입력하세요"></li>
         <li>
-            <input type="button" value="appendData(data) 실행" onclick="callAppendData()">
-            <input type="button" value="deleteData(start,end) 실행" onclick="callDeleteData()">
-            <input type="button" value="insertData(start,data) 실행" onclick="callInsertData()">
-            <input type="button" value="replaceData(start,end,data) 실행" onclick="callReplaceData()">
-            <input type="button" value="substringData(start,end) 실행" onclick="callSubstringData()">
+            <input type="button" value="appendData(data) 실행" onclick="callTextAPI(1)">
+            <input type="button" value="deleteData(start,end) 실행" onclick="callTextAPI(2)">
+            <input type="button" value="insertData(start,data) 실행" onclick="callTextAPI(3)">
+            <input type="button" value="replaceData(start,end,data) 실행" onclick="callTextAPI(4)">
+            <input type="button" value="substringData(start,end) 실행" onclick="callTextAPI(5)">
         </li>
     </form>
     
     <script>
-        var target = document.getElementById('target').firstChild;
-        var data = document.getElementById('datasource');
-        var start = document.getElementById('start');
-        var end = document.getElementById('end');
-        function callAppendData(){
-            target.appendData(data.value);
-        }
-        function callDeleteData(){
-            target.deleteData(start.value, end.value);
-        }
-        function callInsertData(){
-            target.insertData(start.value, data.value); 
-        }
-        function callReplaceData(){
-            target.replaceData(start.value, end.value, data.value);
-        }
-        function callSubstringData(){
-            alert(target.substringData(start.value, end.value));
+        var target = document.getElementById('target').firstChild
+        var data = document.getElementById('datasource')
+        var start = document.getElementById('start')
+        var end = document.getElementById('end')
+
+        function callTextAPI(mode){
+            if(mode === 1)  target.appendData(data.value)
+            /*
+            .appendData(d)      // 추가(덧붙임)
+            인자(d)로 문자열(텍스트)를 입력받아서 해당 텍스트 객체의 텍스트 끝에 이어서 추가함.
+            */
+            
+            else if(mode === 2)  target.deleteData(start.value, end.value)
+            /*
+            .deleteData(s, e)   // 삭제
+            첫번째 인자(s)로 시작 인덱스를 입력받고, 두번째 인자(e)로 끝 인덱스를 입력받아서, 
+            s인덱스부터 s+e인덱스 까지의 텍스트를 삭제함.
+            */
+            
+            else if(mode === 3)  target.insertData(start.value, data.value)
+            /*
+            .insertData(s, d)      // 삽입
+            첫번째 인자(s)로 삽입할 위치의 인덱스를 입력받고, 두번째 인자(d)로 삽입할 문자열(텍스트)를 입력받아서,
+            s-1인덱스와 s인덱스 사이에 인자로 받은 텍스트(d)를 삽입함.
+            */
+            
+            else if(mode === 4)  target.replaceData(start.value, end.value, data.value)
+            /*
+            .replaceData(s, e, d)     // 변경
+            첫번째 인자(s)로 시작 인덱스, 두번째 인자(e)로 끝 인덱스, 세번째 인자(d)로 문자열을 입력받아서,
+            s인덱스부터 s+e인덱스 까지의 텍스트를 인자로 받은 텍스트(d)로 변경함.
+            */
+            
+            else if(mode === 5)  alert(target.substringData(start.value, end.value))
+            /*
+            .substringData(s, e)      // 일부 텍스트 추출
+            첫번째 인자(s)로 시작 인덱스, 두번째 인자(e)로 끝 인덱스를 입력받아서,
+            s인덱스부터 s+e인덱스 까지의 텍스트를 문자열로 추출함.
+            (지금 여기서는 alert()함수를 함께 사용해서, 추출한 문자열을 알림창으로 출력함.)
+            */
         }
     </script>
 </body>
