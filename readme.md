@@ -22,6 +22,8 @@
 > https://opentutorials.org/course/1375
 
 (이 강좌가 몇년 지난 강좌라는 걸 염두해서 jQuery 같은 현재는 평가가 달라진 라이브러리는 구별해서 공부할 예정입니다.)  
+
+현재 이 부분에 대한 정리는 길어지다 보니 다른 repo로 분화했습니다. [해당링크](https://github.com/Kimdonghyeon7645/JS_for_WebBrowser)
 <br>
 
 - ### js ES6 ~ ES10 문법 (예정)
