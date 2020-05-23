@@ -31,7 +31,7 @@
         */
         
         alert(target.outerHTML)
-        target.outerHTML = '<p>성인은 작은일로써 큰일을 이루며, 작은어려움으로써 큰어려움이 되기전에 해결한다.</p>'
+        target.outerHTML = '<ul id="hyot-hong"><li>작은 일도 무시하지 않고 최선을 다해야한다.</li><li>성인은 작은일로써 큰일을 이루며, 작은어려움으로써 큰어려움이 되기전에 해결한다.</li></ul>'
         /*
         .outerHTML 은 inner와 비슷한데, 자식노드만이 아니라, 선택한 대상 노드객체까지 포함해서 모두 문자열로 처리한다.
         노드객체에 .outerHTML 를 붙이면, 그 노드(+이녀석의 자식노드까지)를 문자열로 읽고 쓸수 있다.
@@ -41,8 +41,10 @@
         alert(target.outerText)
         /*
         .innerText 와 .outerText는 HTML 태그부분 <~>, </~>을 제외한 문자열만을 리턴한다.
-        대신에 이것들의 값을 변경할때는 HTML 태그부분을 그대로 사용한 문자열을 대입해 주어야 한다.
+        대신에 이것들로 값을 변경할때는 HTML 태그부분을 그대로 사용한 문자열을 대입해 주어야 한다.
         */
+
+        
     </script>
 </body>
 </html>
