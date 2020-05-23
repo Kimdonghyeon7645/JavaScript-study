@@ -5,7 +5,7 @@ appendData()
 deleteData()
 insertData()
 replaceData()
-substringData()
+substringData()     // 서브 텍스트 조작
 와 같은 메서드가 텍스트 조작과 관련된 API(기능)이다.
 -->
 <!DOCTYPE html>
@@ -16,8 +16,41 @@ substringData()
     <title>Text 객체의 조작 API</title>
 </head>
 <body>
-    <script>
+    <p id="target">텍스트를 수정하쇼</p>
 
+    <form>
+        <li>data(값) : <input type="text" id="datasource" value="" placeholder="data 값을 입력하세요"></li>
+        <li>start(시작인덱스) :<input type="text" id="start" value="" placeholder="시작 인덱스를 입력하세요"></li>
+        <li>end(끝인덱스) : <input type="text" id="end" value="" placeholder="끝 인덱스를 입력하세요"></li>
+        <li>
+            <input type="button" value="appendData(data) 실행" onclick="callAppendData()">
+            <input type="button" value="deleteData(start,end) 실행" onclick="callDeleteData()">
+            <input type="button" value="insertData(start,data) 실행" onclick="callInsertData()">
+            <input type="button" value="replaceData(start,end,data) 실행" onclick="callReplaceData()">
+            <input type="button" value="substringData(start,end) 실행" onclick="callSubstringData()">
+        </li>
+    </form>
+    
+    <script>
+        var target = document.getElementById('target').firstChild;
+        var data = document.getElementById('datasource');
+        var start = document.getElementById('start');
+        var end = document.getElementById('end');
+        function callAppendData(){
+            target.appendData(data.value);
+        }
+        function callDeleteData(){
+            target.deleteData(start.value, end.value);
+        }
+        function callInsertData(){
+            target.insertData(start.value, data.value); 
+        }
+        function callReplaceData(){
+            target.replaceData(start.value, end.value, data.value);
+        }
+        function callSubstringData(){
+            alert(target.substringData(start.value, end.value));
+        }
     </script>
 </body>
 </html>
