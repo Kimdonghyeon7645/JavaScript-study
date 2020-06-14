@@ -46,6 +46,41 @@ console.log(ps2.coding())
 
 
 /*
-그럼 prototype(프로포타입)은 뭘까?
+그럼 prototype(프로토타입)은 뭘까?
+객체의 특수한 프로퍼티로, 상속할 때 중요한 수단으로 사용되는데,
+이 prototype 프로퍼티에 저장된 속성(프로퍼티와 메서드)들은 생성자를 통해서 객체가 만들어 질 경우에, 해당 객체에 prototype의 속성들이 만들어진다.
 
+이것때문에, 부모객체의 생성자를 불러서 객체를 만드는 것을 (new 부모객체) 자식객체의 propotype 속성에 담으면, 
+자식객체에서도 부모객체의 propotype 속성들을 연결해서 이용할 수 있다.
+*/
+function God(){}    // 신(God) 객체 생성
+God.prototype.order = '홍익인간해라'
+
+function Emperor(){}    // 황제(Emperor) 객체 생성
+Emperor.prototype = new God()
+ 
+function King(){}       // 왕(King) 객체 생성
+King.prototype = new Emperor()
+ 
+function Person(){}     // 사람(Person) 객체 생성
+Person.prototype = new King() 
+
+var ob = new Person()
+console.log(ob.order)
+/*
+이렇게 propotype 속성을 서로 연결해서 하위 객체가 상위 객체의 프로퍼티등을 접근할 수 있는 것을 propotype 체인(prototype chain)이라고도 한덴다.
+위같은 코드에서 order라는 프로퍼티를 찾을 때, 순서가 있는데,
+
+1. 원래 객체(Person)에서 order를 찾는다.
+2. 없으면 상위 객체(King)에서 King.prototype.order를 찾는다.
+3. 없으면 상위 객체(Emperor)에서 Emperor.prototype.order를 찾는다.
+4. 없으면 상위 객체(God)에서 God.prototype.order를 찾는다.
+
+
+참고로, 
+하위객체.prototype = 상위객체.prototype
+와 같이 작성하면 안된다. 그러면 두 객체의 prototype 값을 공유하게 되는데, 이러면 하위객체의 prototype 값을 바꾸면 상위객체에서도 값이 변경된다.
+
+하위객체.prototype = new 상위객체
+는 상위객체(상위객체.prototype를 원형으로)가 생성된 값을 하위객체의 prototype 에 넣는거여서 상위객체의 prototype에 영향을 주지 않는 것이다. 
 */
