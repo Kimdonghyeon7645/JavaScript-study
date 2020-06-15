@@ -16,3 +16,19 @@ Date
 RegExp
 가 있다.
 */
+
+// 이러한 표준 내장 객체에 원하는 기능을 확장해서 사용할 수 있다. 
+// 아래와 같이, 배열에 관한 함수를 선언한 것을,
+var arr = new Array('관자제보살', '천수보살', '여의륜보살', '대세지보살', '수월보살')
+function getRandomValueFromArray(haystack){
+    var index = Math.floor(haystack.length*Math.random())
+    return haystack[index]
+}
+console.log(getRandomValueFromArray(arr))
+
+// 아래처럼, 배열 객체에 함수를 메서드로 포함시킬 수 있다.
+Array.prototype.rand = function(){
+    var index = Math.floor(this.length*Math.random())
+    return this[index]
+}
+console.log(arr.rand())
