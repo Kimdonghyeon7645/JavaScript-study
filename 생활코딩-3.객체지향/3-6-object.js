@@ -5,12 +5,18 @@ Object 객체란, 객체의 가장 기본적인 형태를 가진 객체로, 아�
 */
 var nullObj1 = new Object()
 var nullObj2 = Object()
+var obj3 = Object(3)
 
+console.log(nullObj1)
+console.log(nullObj2)
+console.log(obj3)
 /*
-참고로 위같이 Object 생성자를 호출하고 
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object
+참고로 위같이 Object 생성자를 호출한다면, 객체를 생성한다.
+생성자에서 인자값으로 아무값을 주지 않으면(null, undefined도 동일) 빈 객체를 생성해서 반환하고,
+인자값으로 값을 넣으면, 값에 맞는 자료형의 객체를 반환한다. 
 
-Object 생성자는 주어진 값의 객체를 생성합니다. 주어진 값이 null이거나 undefined면 빈 객체를 생성해 반환하고, 그렇지 않으면 값에 맞는 자료형의 객체를 반환합니다. 만약 값이 이미 객체이면 그 값을 그대로 반환합니다.
-
-생성자가 아닌 맥락에서 호출하면 Object는 new Object()와 동일하게 동작합니다.
+참고로 생성자로 Object로 호출(new Object())하지 않고, 걍 호출(Object())해도 생성자로 호출한 것과 동일하게 동작한다.
 */
+
+
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object
