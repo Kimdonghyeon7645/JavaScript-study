@@ -1,4 +1,4 @@
-# - 자바스크립트(JS)의 데이터 타입(자료형)과 변수 (Data type & Variable)
+# 2 - 자바스크립트(JS)의 데이터 타입(자료형)과 변수 (Data type & Variable)
 > 출처 : https://poiemaweb.com/js-data-type-variable
 
 

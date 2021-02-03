@@ -1,4 +1,4 @@
-# 1 - 자바스크립트(JS)의 기본 문법
+# 1 - JS 기본 문법
 > 참고 : https://poiemaweb.com/js-syntax-basics
 
 ## 1. 변수 (Variable)
