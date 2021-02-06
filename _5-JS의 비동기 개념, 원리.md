@@ -29,16 +29,23 @@ JS = 싱글 쓰레드로 동작한다. (= Call Stack이 하나 = 모든 함수 �
 1. Network IO(네트워크 요청) : Ajax 같은거
 2. File IO(파일시스템 작업) : 파일 읽고 쓰기 같은거
 3. 의도적 시간 지연사용 기능 : 알람, setTimeout() 같은거
-4. DB 조회 같은거
+4. 사용자 입력, 이벤트 처리 같은거
+5. DB 조회 같은거
 
 
 #### 비동기 처리 원리
 
 
-1. 비동기 처리할 일을 API에 넘긴다.
+1. 비동기 처리할 일을 API에 넘겨 실행한다.
     - 별개의 멀티 쓰레드 영역
     - 브라우저에선 Web API, NodeJS에선 Node API
-2. 
+2. 처리가 끝났을 때, 그 뒤에 실행될 일이 있음 Event Queue에서 저장되서 대기한다.
+3. 메인 쓰레드가 일 없어지면 Event Loop가 Event Queue에 있는 일을 꺼내서 실행한다. 
 
 
+## Reference
 
+- [얄팍한 코딩사전 영상](https://youtu.be/m0icCqHY39U)
+- [JS 비동기 프로그래밍 이해하기](https://medium.com/@kwoncharles/js-%EB%B9%84%EB%8F%99%EA%B8%B0-async-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-7dc99ecf4ca6)
+- [JS-비동기는-어떻게-구현되어있는가](https://velog.io/@thsoon/JS-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%98%84%EB%90%98%EC%96%B4%EC%9E%88%EB%8A%94%EA%B0%80)
+- [Javascript 동기와 비동기 callback부터 async&await](https://mber.tistory.com/8)
